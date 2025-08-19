@@ -24,13 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": {
-    "/api": {
-      "target": "https://apdv-api.onrender.com",
-      "changeOrigin": true,
-      "secure": false
-    }
-  },
+  "proxy": "https://apdv-api.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",
