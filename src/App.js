@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
+import ItemsList from './components/ItemsList';
+import ItemForm from './components/ItemForm';
+import ItemDetail from './components/ItemDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            API CRUD App
+          </Typography>
+          <Button color="inherit" component={Link} to="/">
+            Home
+          </Button>
+          <Button color="inherit" component={Link} to="/items/new">
+            Add Item
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Container maxWidth="md" sx={{ mt: 4 }}>
+        <Routes>
+          <Route path="/" element={<ItemsList />} />
+          <Route path="/items/new" element={<ItemForm />} />
+          <Route path="/items/:id" element={<ItemDetail />} />
+          <Route path="/items/:id/edit" element={<ItemForm />} />
+        </Routes>
+      </Container>
+    </Router>
   );
 }
 
